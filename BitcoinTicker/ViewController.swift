@@ -23,8 +23,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var bitcoinPriceLabel: UILabel!
     @IBOutlet weak var currencyPicker: UIPickerView!
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -32,7 +30,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         currencyPicker.dataSource = self
     }
 
-    
     //TODO: Place your 3 UIPickerView delegate methods here
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -75,28 +72,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     self.bitcoinPriceLabel.text = "Connection Issues"
                 }
             }
-
     }
 
-    
-    
-    
-    
+
     //MARK: - JSON Parsing
     /***************************************************************/
     
     func updatePriceData(json : JSON) {
         
-        if let price = json["last"].double {
-        bitcoinPriceLabel.text = currencySymbol + " " + String(price)
+        if let price = json["ask"].double {
+        bitcoinPriceLabel.text = currencySymbol + String(price)
+        } else {
+            bitcoinPriceLabel.text = "Price Unavailable"
         }
-        
-       
+    
     }
     
-
-
-
-
 }
 
