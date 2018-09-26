@@ -44,7 +44,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(currencyArray[row])
+        
+        let currency = currencyArray[row]
+        let finalURL = baseURL + currency
+        print(finalURL)
     }
         
   
